@@ -1,0 +1,11 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" /> <!-- Calls search at each new keystroke -->
+  <ul class="search-result">
+    <li *ngFor="let hero of heroes$ | async" > <!-- The $ is convention for observable objects -->
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>
