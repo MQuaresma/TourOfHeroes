@@ -19,10 +19,6 @@
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -35,5 +31,6 @@ testem.log
 /typings
 
 # System Files
-.DS_Store
+**/.DS_Store
+**/._*
 Thumbs.db
