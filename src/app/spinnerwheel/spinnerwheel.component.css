@@ -1,9 +1,11 @@
+/*  */
 .spinner_wheel {
     position: absolute;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 100%;
-    background-image: url("https://media.giphy.com/media/E6tTNCdMiIcIE/giphy.gif");
-    background-color: rgba(0,0,0,.5);
+    background-image: url("https://i.gifer.com/VdOY.gif");
+    background-repeat: no-repeat;
+    background-color: rgb(255, 255, 255);
 }
