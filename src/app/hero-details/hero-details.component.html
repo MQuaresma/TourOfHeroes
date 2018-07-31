@@ -1,4 +1,4 @@
-<div *ngIf="hero else #spinner">
+<div *ngIf="hero; else spinner">
   <h2>{{hero.name | uppercase}} Details</h2>
   <div><span>id: </span>{{hero.id}}</div>
   <div>
