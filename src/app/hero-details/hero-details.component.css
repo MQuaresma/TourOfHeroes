@@ -1,17 +1,18 @@
 .hDetails {
     display: flex;
     flex-direction: column;
+    position: relative;
     align-items: center;
     background-color: rgb(204, 204, 204);
     border-radius: 20px;
+    min-height: 250px;
 }
 
 .heroAttribute {
     background-color: #eee;
     width: 250px;
-    height: 1.6em;
+    width: 1.6em;
     padding-top: .3em;
-    text-align: center;
     margin: .5em;
     border-radius: 20px;
 }

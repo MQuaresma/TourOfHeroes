@@ -11,14 +11,15 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./hero-details.component.css']
 })
 export class HeroDetailsComponent implements OnInit {
-
   @Input() hero: Hero;
+
+  gifPath : string = "../assets/heroDetails.gif";
 
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
-  ) { }
+    private location: Location) { }
+
 
   ngOnInit() {
     this.getHero();

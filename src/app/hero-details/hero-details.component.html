@@ -1,15 +1,16 @@
-<div *ngIf="hero; else spinner" class="hDetails">
-    <h2>{{hero.name | uppercase}} Details</h2>
-    <div class="heroAttribute"><span>Hero ID: </span>{{hero.id}}</div>
-    <div class="heroAttribute">
-    <label>Hero Name:
-        <input [(ngModel)]="hero.name" placeholder="name">
-    </label>
+<div class="hDetails">
+    <div *ngIf="hero; else spinner">
+        <h2>{{hero.name | uppercase}} Details</h2>
+        <div class="heroAttribute"><span>Hero ID: </span>{{hero.id}}</div>
+        <div class="heroAttribute">
+        <label>Hero Name:
+            <input [(ngModel)]="hero.name" placeholder="name">
+        </label>
+        </div>
+        <button (click)="save()">Save</button>
+        <button (click)="goBack()">go back</button>
     </div>
-    <button (click)="save()">Save</button>
-    <button (click)="goBack()">go back</button>
+    <ng-template #spinner>
+        <app-spinnerwheel [fullPath]="gifPath"></app-spinnerwheel>
+    </ng-template>
 </div>
-
-<ng-template #spinner>
-    <app-spinnerwheel></app-spinnerwheel>
-</ng-template>
