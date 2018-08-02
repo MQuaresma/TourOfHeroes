@@ -1,16 +1,29 @@
-<h2>My heroes</h2>
+<h2>My Heroes</h2>
 <div>
-    <mat-form-field>
-        <input matInput placeholder="New Hero" #heroName />
-    </mat-form-field>
-    <button mat-button (click)="add(heroName.value); heroName.value='';">Create</button>
+    <div class="newHero">
+        <mat-form-field>
+            <input matInput placeholder="New Hero" #heroName />
+        </mat-form-field>
+        <button class="create" mat-button (click)="add(heroName.value); heroName.value='';">Create</button>
+    </div>
+    <div class="heroList">
+        <table mat-table #heroTable [dataSource]="heroes" class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> ID </th>
+                <td mat-cell *matCellDef="let hero"> {{hero.id}} </td>
+            </ng-container>
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Hero Name </th>
+                <td mat-cell *matCellDef="let hero"> {{hero.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="edit" stickyEnd>
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let hero">
+                    <button mat-raised-button>Edit</button>     
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="renderedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: renderedColumns"></tr>
+        </table>
+    </div>
 </div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes" > <!-- Click event listener i.e event binding-->
-    <a routerLink="/detail/{{hero.id}}">
-      <span class="badge">{{hero.id}}</span> {{hero.name}}
-    </a>
-    <button class="delete" title="delete hero"
-            (click)="delete(hero)">x</button>
-  </li>
-</ul>

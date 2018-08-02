@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatTableModule } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 import {Hero} from '../Hero';
 import { HeroService } from '../hero.service';
 
@@ -10,31 +14,35 @@ import { HeroService } from '../hero.service';
 })
 
 export class HeroesComponent implements OnInit {
-  heroes : Hero[];
+    @ViewChild('heroTable') heroTable: MatTable<Hero>;
+    heroes: Hero[];
+    renderedColumns = ['id', 'name', 'edit'];
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-        .subscribe(heroes => this.heroes = heroes);
-  }
+    getHeroes(): void {
+        this.heroService.getHeroes()
+            .subscribe(heroes => this.heroes = heroes);
+    }
 
-  constructor(private heroService: HeroService) { }
+    constructor(private heroService: HeroService) { }
 
-  ngOnInit() {
-    //initialization logic
-    this.getHeroes();
-  }
+    ngOnInit() {
+        // Initialization logic
+        this.getHeroes();
+    }
 
-  add(name: string): void{
-    name = name.trim();
-    if(!name) return;
-    this.heroService.addHero({name} as Hero)
-        .subscribe(hero => {
-          this.heroes.push(hero);
-        });
-  }
+    add(name: string): void {
+        name = name.trim();
+        if(!name) return;
+        this.heroService.addHero({name} as Hero).subscribe(
+            (hero) => { this.heroes.push(hero); },
+            (err) => { console.log(err); },
+            () => { this.heroTable.renderRows(); }
+        );
+    }
 
-  delete(hero : Hero): void{
-    this.heroes = this.heroes.filter(h => h !== hero); // assumes that the server will delete the hard copy of the hero
-    this.heroService.deleteHero(hero).subscribe(); // subscribe ensures that the delete request is sent to the server
-  }
+    delete(hero: Hero): void {
+        this.heroes = this.heroes.filter(h => h !== hero); // assumes that the server will delete the hard copy of the hero
+        this.heroService.deleteHero(hero).subscribe(); // subscribe ensures that the delete request is sent to the server
+    }
+
 }

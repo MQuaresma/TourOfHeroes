@@ -1,6 +1,7 @@
 <div class="hDetails">
     <div *ngIf="hero; else spinner">
         <h2>{{hero.name | uppercase}} Details</h2>
+        <!-- FIX -->
         <div class="heroAttribute"><span>Hero ID: </span>{{hero.id}}</div>
         <div class="heroAttribute">
         <label>Hero Name:
