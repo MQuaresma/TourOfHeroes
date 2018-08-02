@@ -12,6 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
@@ -21,6 +22,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SpinnerwheelComponent } from './spinnerwheel/spinnerwheel.component';
+import { NotifierComponent } from './notifier/notifier.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { SpinnerwheelComponent } from './spinnerwheel/spinnerwheel.component';
     DashboardComponent,
     HeroSearchComponent,
     SpinnerwheelComponent,
+    NotifierComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { SpinnerwheelComponent } from './spinnerwheel/spinnerwheel.component';
     MatListModule,
     MatGridListModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
