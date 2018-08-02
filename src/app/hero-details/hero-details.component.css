@@ -8,15 +8,6 @@
     min-height: 250px;
 }
 
-.heroAttribute {
-    background-color: #eee;
-    width: 250px;
-    width: 1.6em;
-    padding-top: .3em;
-    margin: .5em;
-    border-radius: 20px;
-}
-
 button {
     background-color: #eee;
     border: none;
