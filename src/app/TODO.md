@@ -1,4 +1,5 @@
 # TODO
 
 ## Implement
-- [ ] Modular spinner component
+- [x] Modular spinner component
+- [ ] Re-design interface with Angular Material
