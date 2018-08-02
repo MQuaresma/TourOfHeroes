@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 import { MatTable } from '@angular/material/table';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { MatDialog } from '@angular/material';
 
-import {Hero} from '../Hero';
+import { Hero } from '../Hero';
 import { HeroService } from '../hero.service';
+import { HeroEditorComponent } from '../hero-editor/hero-editor.component';
 
 // Decorator for component metadata
 @Component({
@@ -18,21 +19,24 @@ export class HeroesComponent implements OnInit {
     heroes: Hero[];
     renderedColumns = ['id', 'name', 'edit'];
 
-    getHeroes(): void {
-        this.heroService.getHeroes()
-            .subscribe(heroes => this.heroes = heroes);
-    }
-
-    constructor(private heroService: HeroService) { }
+    constructor(private heroService: HeroService, public editDialog: MatDialog) { }
 
     ngOnInit() {
         // Initialization logic
         this.getHeroes();
     }
 
+    getHeroes(): void {
+        this.heroService.getHeroes()
+            .subscribe(heroes => this.heroes = heroes);
+    }
+
+
     add(name: string): void {
         name = name.trim();
-        if(!name) return;
+        if (!name) {
+            return;
+        }
         this.heroService.addHero({name} as Hero).subscribe(
             (hero) => { this.heroes.push(hero); },
             (err) => { console.log(err); },
@@ -45,4 +49,10 @@ export class HeroesComponent implements OnInit {
         this.heroService.deleteHero(hero).subscribe(); // subscribe ensures that the delete request is sent to the server
     }
 
+    editHero(hero: Hero) {
+        const editRef = this.editDialog.open(HeroEditorComponent, {
+            width: '250px',
+            data: hero
+        });
+    }
 }

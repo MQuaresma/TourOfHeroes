@@ -1,0 +1,9 @@
+<div mat-dialog-content>
+    <mat-form-field>
+        <input matInput [value]=data.name #heroName>
+    </mat-form-field>
+    <mat-dialog-actions>
+        <button mat-button (click)="discardChanges()">Discard</button>
+        <button mat-button (click)="saveHero(heroName.value)">Save</button>
+    </mat-dialog-actions>
+</div>

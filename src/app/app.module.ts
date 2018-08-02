@@ -12,7 +12,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule } from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
@@ -24,38 +24,39 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SpinnerwheelComponent } from './spinnerwheel/spinnerwheel.component';
 import { NotifierComponent } from './notifier/notifier.component';
+import { HeroEditorComponent } from './hero-editor/hero-editor.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent,
-    HeroDetailsComponent,
-    MessagesComponent,
-    DashboardComponent,
-    HeroSearchComponent,
-    SpinnerwheelComponent,
-    NotifierComponent,
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, {dataEncapsulation: false}
-    ),
-    MatInputModule,
-    BrowserAnimationsModule,
-    MatButtonModule,
-    MatAutocompleteModule,
-    MatListModule,
-    MatGridListModule,
-    MatTableModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatCardModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeroesComponent,
+        HeroDetailsComponent,
+        MessagesComponent,
+        DashboardComponent,
+        HeroSearchComponent,
+        SpinnerwheelComponent,
+        NotifierComponent,
+        HeroEditorComponent,
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {dataEncapsulation: false}),
+        MatInputModule,
+        BrowserAnimationsModule,
+        MatButtonModule,
+        MatAutocompleteModule,
+        MatListModule,
+        MatGridListModule,
+        MatTableModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatCardModule
+    ],
+    entryComponents: [HeroEditorComponent],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
