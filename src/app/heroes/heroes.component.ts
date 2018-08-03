@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material';
 

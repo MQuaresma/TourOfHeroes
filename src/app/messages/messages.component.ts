@@ -1,9 +1,14 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { MessageService } from '../message.service';
 import { Message } from '../Message';
+
+const msgMock: Message[] = [
+    { id: 1, content: 'Hello' },
+    { id: 2, content: 'Goodbye' }
+];
 
 
 @Component({
@@ -13,34 +18,26 @@ import { Message } from '../Message';
 })
 
 export class MessagesComponent implements OnInit {
-    msgLog: MatTableDataSource<Message>;
-    msgs: Message[];
-    renderedColumns: string[] = ['id', 'content'];
+    msgLog = new MatTableDataSource<Message>(msgMock);
+    msgs: Message[] = msgMock;
+    renderedColumns: string[] = ['select', 'id', 'content'];
     curSelection = new SelectionModel<Message>(true, []);
 
     constructor(public messageService: MessageService) { }
 
     ngOnInit() {
-        this.getMessages();
-    }
-
-    getMessages() {
-        this.messageService.getMsgs().subscribe(
-            (msg) => {this.msgs = msg; },
-            (err) => {console.log(err); },
-            () => { this.msgLog = new MatTableDataSource<Message>(this.msgs); }
-        );
+        // this.getMessages();
     }
 
     /* Checks whether all messages are selected */
-    allSelected(){
+    allSelected() {
         const nSelected = this.curSelection.selected.length;
         const nRows = this.msgLog.data.length;
         return nSelected === nRows;
     }
 
     /* Toggle all selections */
-    toggleAll(){
+    toggleAll() {
         this.allSelected() ?
             this.curSelection.clear() :
             this.msgLog.data.forEach(row => this.curSelection.select(row));
