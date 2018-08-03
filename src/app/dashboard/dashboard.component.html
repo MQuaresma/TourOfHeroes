@@ -2,9 +2,9 @@
 <mat-grid-list cols="2" rowHeight="120px">
     <div class="listCell mat-elevation-z8">
         <mat-grid-tile *ngFor="let hero of heroes">
-            <a routerLink="/detail/{{hero.id}}">
+            <button mat-button (click)="editHero(hero)">
                 <h4>{{hero.name}}</h4>
-            </a>
+            </button>
         </mat-grid-tile>
     </div>
 </mat-grid-list>

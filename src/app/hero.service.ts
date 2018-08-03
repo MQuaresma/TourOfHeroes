@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable, ObservableLike, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
+
 import { Hero } from './Hero';
+import { Message } from './Message';
 import { MessageService } from './message.service';
 
 const httpOptions = {
@@ -21,7 +23,7 @@ export class HeroService {
     private messageService: MessageService) { } // service-in-service: inject service in another service
 
   /* GET heroes from the server */
-  getHeroes(): Observable<Hero[]>{
+  getHeroes(): Observable<Hero[]> {
     return this.http.get<Hero[]>(this.heroesUrl)
       .pipe(
         tap(heroes => this.log('fetched heroes')),
@@ -30,7 +32,7 @@ export class HeroService {
   }
 
   /* GET hero by id. Will 404 if id not found */
-  getHero(id: number): Observable<Hero>{
+  getHero(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/${id}`;
     return this.http.get<Hero>(url).pipe(
       tap(_ => this.log(`fetched hero id=${id}`)),
@@ -39,8 +41,9 @@ export class HeroService {
   }
 
   /* Log a HeroService message with the MessageService */
-  private log(message: String){
-    this.messageService.add(`HeroService: ${message}`);
+  private log(message: String) {
+      const content = `HeroService: ${message}`;
+      this.messageService.add( { content } as Message);
   }
 
   /**
@@ -49,7 +52,7 @@ export class HeroService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable object
    */
-    private handleError<T> (operation = 'operation', result?: T){
+    private handleError<T> (operation = 'operation', result?: T) {
       return(error: any): Observable<T> => {
         // TODO: send the error to remote logging infrastructure
         console.error(error); // Log to console instead
@@ -62,7 +65,7 @@ export class HeroService {
       };
     }
 
-    updateHero(hero : Hero): Observable<any> {
+    updateHero(hero: Hero): Observable<any> {
       return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
         tap(_ => this.log(`updated hero id=${hero.id}`)),
         catchError(this.handleError<any>('updateHero'))
@@ -70,14 +73,14 @@ export class HeroService {
     }
 
     /*POST: add a new hero to the server */
-    addHero(hero: Hero): Observable<Hero>{
+    addHero(hero: Hero): Observable<Hero> {
       return this.http.post<Hero>(this.heroesUrl, hero, httpOptions).pipe(
         tap((hero: Hero) => this.log(`added hero w/ id=${hero.id}`)),
         catchError(this.handleError<Hero>('addHero'))
       );
     }
 
-    deleteHero(hero : Hero | number): Observable<Hero>{
+    deleteHero(hero: Hero | number): Observable<Hero> {
       const id = typeof hero === 'number' ? hero : hero.id;
       const url = `${this.heroesUrl}/${id}`;
 
@@ -88,8 +91,8 @@ export class HeroService {
     }
 
     /* GET heroes via fuzzy search */
-    searchHeroes(term: String): Observable<Hero[]>{
-      if(!term.trim()){ // No search term
+    searchHeroes(term: String): Observable<Hero[]> {
+      if (!term.trim()) { // No search term
         return of([]);
       }
       return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(

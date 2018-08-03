@@ -1,9 +1,15 @@
-<div class="main_menu_options">
-    <h1>{{title}}</h1>
-    <nav>
-      <a mat-button routerLink="/dashboard">Dashboard</a>
-      <a mat-button routerLink="/heroes">Heroes</a>
-    </nav>
-</div>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<mat-sidenav-container class="mainSidebar" role="navigation">
+    <mat-sidenav #sideMenu mode="over" closed role="main">
+        <h2><a routerLink=''>{{title}}</a></h2>
+        <p><a mat-button routerLink="/dashboard">Dashboard</a></p>
+        <p><a mat-button routerLink="/heroes">Heroes</a></p>
+        <p><a mat-button routerLink="/log">Log</a></p>
+        <p><a mat-button routerLink="/about">About</a></p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <button mat-button (click)="sideMenu.toggle()">Menu</button>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+
+
