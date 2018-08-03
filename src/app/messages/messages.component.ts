@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
@@ -13,20 +13,23 @@ import { Message } from '../Message';
 })
 
 export class MessagesComponent implements OnInit {
-    renderedColumns: string[] = ['id', 'content'];
     msgLog: MatTableDataSource<Message>;
+    msgs: Message[];
+    renderedColumns: string[] = ['id', 'content'];
     curSelection = new SelectionModel<Message>(true, []);
 
     constructor(public messageService: MessageService) { }
 
     ngOnInit() {
-        this.msgLog = new MatTableDataSource<Message>(this.getMessages());
+        this.getMessages();
     }
 
     getMessages() {
-        let msgs: Message[];
-        this.messageService.getMsgs().subscribe(msg => msgs= msg);
-        return msgs;
+        this.messageService.getMsgs().subscribe(
+            (msg) => {this.msgs = msg; },
+            (err) => {console.log(err); },
+            () => { this.msgLog = new MatTableDataSource<Message>(this.msgs); }
+        );
     }
 
     /* Checks whether all messages are selected */

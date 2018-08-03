@@ -1,5 +1,5 @@
 <h2>Messages</h2>
-<table mat-table [dataSource]="msgLog" class="mat-elevation-z8">
+<table mat-table #msgTbl [dataSource]="msgLog" class="mat-elevation-z8">
     <ng-container matColumnDef="select">
         <th mat-header-cell *matHeaderCellDef>
             <mat-checkbox (change)="$event ? toggleAll() : null"
