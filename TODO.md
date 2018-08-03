@@ -11,6 +11,7 @@
 - [ ] Categorize messages(system/debugging, others)
 - [ ] Allow filtering of messages via category
 - [ ] Add timestamp to messages
+- [ ] Dashboard search field centered
 
 ## Fix
 - [x] Hero details field formatting is collapsed
