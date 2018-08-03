@@ -29,5 +29,5 @@
     <tr mat-header-row *matHeaderRowDef="renderedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: renderedColumns;" (click)="curSelection.toggle(row)"></tr>
 </table>
-<button mat-button class="clear" (click)="messageService.clearAll()">Clear all</button>
+<button mat-button class="clear" (click)="messageService.clearAll();">Clear all</button>
 <button mat-button class="clear" (click)="messageService.clearSelected(curSelection.selected)">Clear selected</button>

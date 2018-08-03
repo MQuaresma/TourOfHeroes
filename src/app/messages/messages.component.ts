@@ -5,12 +5,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MessageService } from '../message.service';
 import { Message } from '../Message';
 
-const msgMock: Message[] = [
-    { id: 1, content: 'Hello' },
-    { id: 2, content: 'Goodbye' }
-];
-
-
 @Component({
   selector: 'app-messages',
   templateUrl: './messages.component.html',
@@ -18,15 +12,24 @@ const msgMock: Message[] = [
 })
 
 export class MessagesComponent implements OnInit {
-    msgLog = new MatTableDataSource<Message>(msgMock);
-    msgs: Message[] = msgMock;
+    msgLog: MatTableDataSource<Message>;
+    msgs: Message[];
     renderedColumns: string[] = ['select', 'id', 'content'];
     curSelection = new SelectionModel<Message>(true, []);
 
     constructor(public messageService: MessageService) { }
 
     ngOnInit() {
-        // this.getMessages();
+        this.getMessages();
+    }
+
+
+    getMessages() {
+        this.messageService.getMsgs().subscribe(
+            (tMsgs) => { this.msgs = tMsgs; },
+            (err) => { console.log(err); },
+            () => { this.msgLog = new MatTableDataSource<Message>(this.msgs); }
+        );
     }
 
     /* Checks whether all messages are selected */

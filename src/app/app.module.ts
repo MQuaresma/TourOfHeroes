@@ -25,7 +25,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { SpinnerwheelComponent } from './spinnerwheel/spinnerwheel.component';
-import { NotifierComponent } from './notifier/notifier.component';
 import { HeroEditorComponent } from './hero-editor/hero-editor.component';
 
 @NgModule({
@@ -37,8 +36,7 @@ import { HeroEditorComponent } from './hero-editor/hero-editor.component';
         DashboardComponent,
         HeroSearchComponent,
         SpinnerwheelComponent,
-        NotifierComponent,
-        HeroEditorComponent,
+        HeroEditorComponent
     ],
     imports: [
         BrowserModule,

@@ -1,10 +1,7 @@
 <mat-sidenav-container class="mainSidebar" role="navigation">
     <mat-sidenav #sideMenu mode="over" closed role="main">
         <h2><a routerLink=''>{{title}}</a></h2>
-        <p><a mat-button routerLink="/dashboard">Dashboard</a></p>
-        <p><a mat-button routerLink="/heroes">Heroes</a></p>
-        <p><a mat-button routerLink="/log">Log</a></p>
-        <p><a mat-button routerLink="/about">About</a></p>
+        <p *ngFor="let route of menuRoutes"><a mat-button routerLink="{{route.path}}">{{route.menu}}</a></p>
     </mat-sidenav>
     <mat-sidenav-content>
         <button mat-button (click)="sideMenu.toggle()">Menu</button>
