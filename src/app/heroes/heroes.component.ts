@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 import { MatDialog } from '@angular/material';
 
-import { Hero } from '../Hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../models/Hero';
+import { HeroService } from '../services/hero.service';
 import { HeroEditorComponent } from '../hero-editor/hero-editor.component';
 
 // Decorator for component metadata

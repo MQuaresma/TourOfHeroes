@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { Hero } from '../Hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../models/Hero';
+import { HeroService } from '../services/hero.service';
 import { HeroEditorComponent } from '../hero-editor/hero-editor.component';
 
 
@@ -22,12 +22,12 @@ export class DashboardComponent implements OnInit {
         this.getHeroes();
     }
 
-    getHeroes(): void{
+    getHeroes() {
         this.heroService.getHeroes()
             .subscribe(heroes => this.heroes = heroes.slice(1, 5));
     }
 
-    editHero(hero: Hero){
+    editHero(hero: Hero) {
         const editRef = this.editDialog.open(HeroEditorComponent, {
             width: '250px',
             data: hero

@@ -3,8 +3,8 @@ import { Observable, ObservableLike, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
 
-import { Hero } from './Hero';
-import { Message } from './Message';
+import { Hero } from '../models/Hero';
+import { Message } from '../models/Message';
 import { MessageService } from './message.service';
 
 const httpOptions = {

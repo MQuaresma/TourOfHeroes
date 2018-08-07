@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, tap} from 'rxjs/operators';
 
 import { NotifierService } from './notifier.service';
-import { Message } from './Message';
+import { Message } from '../models/Message';
 
 const httpOptions = {
   headers: new HttpHeaders({'ContentType': 'application/json'})

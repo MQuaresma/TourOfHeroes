@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { MessageService } from '../message.service';
-import { Message } from '../Message';
+import { MessageService } from '../services/message.service';
+import { Message } from '../models/Message';
 
 @Component({
   selector: 'app-messages',

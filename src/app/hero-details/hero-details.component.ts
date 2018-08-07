@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
 import { Location } from '@angular/common';
 
-import { Hero } from '../Hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../models/Hero';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-details',
@@ -13,7 +13,7 @@ import { HeroService } from '../hero.service';
 export class HeroDetailsComponent implements OnInit {
   @Input() hero: Hero;
 
-  gifPath : string = "../assets/heroDetails.gif";
+  gifPath = '../assets/heroDetails.gif';
 
   constructor(
     private route: ActivatedRoute,

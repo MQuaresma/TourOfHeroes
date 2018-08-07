@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import { Hero } from '../Hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../models/Hero';
+import { HeroService } from '../services/hero.service';
 
 @Component({
   selector: 'app-hero-editor',
